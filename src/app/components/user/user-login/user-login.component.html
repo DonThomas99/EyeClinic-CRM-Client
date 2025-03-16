@@ -1,0 +1,22 @@
+<div class="flex items-center justify-center h-screen bg-gradient-to-br from-gray-900 to-gray-700">
+<div class="bg-gray-800 p-10 rounded-xl shadow-xl w-96 text-white">
+<h2 class="text-3xl font-extrabold text-center mb-6">Hello User</h2>
+<form>
+    <div class="mb-5">
+<label class="block text-gray-300 font-medium mb-2" for="email">Email</label>
+<input type="email" id="email" placeholder="Enter your email"
+class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-white">
+<label class="block text-gray-300 font-medium mb-2" for="password">Password</label>  
+<input type="password" id="password" placeholder="Enter your password"
+class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-white">  
+</div>
+<button type="submit"
+class="w-full bg-blue-600 text-white font-bold py-2 rounded-lg hover:bg-blue-500 transition duration-200"
+>LOGIN</button>
+</form>
+<button [routerLink]="['/home']" class="w-full mt-4 bg-gray-700 text-white font-bold py-2 rounded-lg hover:bg-gray-600 transition duration-200">Back to Home</button>
+<p class="text-sm text-center text-gray-400 mt-4">Don't have an account?
+    <a [routerLink]="['/home/user/signup']" class="text-blue-400 hover:underline">Sign up</a>
+</p>
+</div>
+</div>
