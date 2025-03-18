@@ -5,11 +5,9 @@ import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';  // ✅ Import ToastrService
 import { passwordMatchValidator, validateByTrimming } from '../../../helpers/validation';
 import { emailValidators, mobileValidators, nameValidators, otpValidators, passwordValidators } from '../../../shared/validators';
-import { signUp } from '../../../shared/constants';
 import { UserService } from '../../../services/userService/user.service';
 import { Res } from '../../../models/common';
-import Swal from 'sweetalert2';
-import { timeout } from 'rxjs';
+
 
 @Component({
   selector: 'app-sign-up',

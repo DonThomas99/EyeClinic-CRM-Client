@@ -1,3 +1,4 @@
+import { IUser } from "./user"
 
 
 export interface IApiRes  {
@@ -12,6 +13,11 @@ export interface Res {
     message:string
 }
 
+export interface userData{
+    status:number,
+    message:string,
+    data:IUser
+}
 
 
 
