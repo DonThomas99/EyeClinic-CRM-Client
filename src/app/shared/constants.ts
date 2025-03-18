@@ -16,3 +16,11 @@ export const passwordRegex = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{${passwordLength
 export const charRegex = /^[A-Z]$/
 export const mobileRegex = '^[1-9][0-9]{9}$'
 export const classNumber = '^(1[0-2]|[1-9])$'
+
+export const signUp={
+message:String,
+resendOtp:String,
+formattedTime:String,
+otpResendCount:Number,
+showOtpResend:Boolean
+}

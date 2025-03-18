@@ -2,6 +2,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "flowbite/plugin";
+@import 'toastr/build/toastr.min.css';
+
 .body{
     background-color: white;
 }
