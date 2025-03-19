@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environments } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IApiRes } from '../../models/common';
+import { Icustomer, ICustomerData } from '../../models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,10 @@ backendURL = environments.backendURL
 
 
   adminLogin(email:string,password:string){
-    console.log(email,password);
     return this.http.post<IApiRes>(`${this.backendURL}/admin/login`,{email,password})
+  }
+  fetchCustomerData(){
+    return this.http.get<ICustomerData>(`${this.backendURL}/admin/customers`)
   }
 
 }

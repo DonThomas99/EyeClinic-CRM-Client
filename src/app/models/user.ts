@@ -33,3 +33,4 @@ export interface IUser  {
     walletHistory: IWalletHistory[];
     isBlocked: boolean;
 }
+

@@ -9,10 +9,9 @@ import { Res } from '../../models/common';
 })
 export class UserService {
 backendURL = environments.backendURL
-  constructor(private readonly http:HttpClient) {   }
+  constructor(private readonly http:HttpClient) {}
   
   userSignUp(user:OUserSignUp){
-    console.log('hee')
     return this.http.post<Res>(`${this.backendURL}/user/signup`,user)
   }
   login(userData:OUserLogin){

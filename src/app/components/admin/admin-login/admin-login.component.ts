@@ -30,10 +30,8 @@ export class AdminLoginComponent implements OnInit {
   submit(){
     if(this.form.valid){
       const values = this.form.getRawValue()
-      console.log(values);
       this.adminService.adminLogin(values.email,values.password).subscribe({
         next:(res:IApiRes)=>{
-          console.log();
            this.router.navigate(['home/admin/adminDashboard'])
           Swal.fire({
             icon:'success',
