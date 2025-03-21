@@ -1,1 +1,62 @@
 <app-admin-header></app-admin-header>
+
+<div class="container mx-auto p-6">
+  <!-- Header with Buttons -->
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-semibold text-gray-800">Product List</h1>
+    <div>
+      <button 
+        (click)="addProduct()"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2"
+      >
+        Add Product
+      </button>
+      <button 
+        (click)="viewCategories()"
+        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded"
+      >
+        View Categories
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Table -->
+  <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+    <table class="min-w-full border border-gray-200">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Name</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Price</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Category</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Stock</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
+          <th class="px-6 py-3 text-center text-sm font-semibold text-gray-600">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" class="border-b hover:bg-gray-50">
+          <td class="px-6 py-4">{{ product.name }}</td>
+          <td class="px-6 py-4">₹{{ product.price }}</td>
+          <td class="px-6 py-4">{{ product.category }}</td>
+          <td class="px-6 py-4">{{ product.stock }}</td>
+          <td class="px-6 py-4">
+            <span
+              class="px-3 py-1 rounded-full text-xs font-semibold"
+              [ngClass]="product.isBlocked ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'"
+            >
+              {{ product.isBlocked ? 'Listed' : 'Unlisted' }}
+            </span>
+          </td>
+          <td class="px-6 py-4 text-center">
+            <button
+              (click)="editProduct(product._id)"
+              class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
