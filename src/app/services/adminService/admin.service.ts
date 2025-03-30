@@ -3,6 +3,7 @@ import { environments } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IApiRes } from '../../models/common';
 import { Icustomer, ICustomerData } from '../../models/admin';
+import { AddCategoryRes, categoryRes, OAddCategory } from '../../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,14 @@ backendURL = environments.backendURL
   }
   fetchCustomerData(){
     return this.http.get<ICustomerData>(`${this.backendURL}/admin/customers`)
+  }
+
+  fetchCategoryList(){
+    return this.http.get<categoryRes>(`${this.backendURL}/admin/category`)
+  }
+  addCategory(category:OAddCategory){
+    console.log(category);
+    return this.http.post<AddCategoryRes>(`${this.backendURL}/admin/category`,category)
   }
 
 }

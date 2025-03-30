@@ -7,6 +7,7 @@ import { StaffListComponent } from './staff-list/staff-list.component';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OptometristListComponent } from './optometrist-list/optometrist-list.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'adminLogin',pathMatch:'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'orderList',component:OrderListComponent},
   {path:'optometristList',component:OptometristListComponent},
   {path:'staffList', component:StaffListComponent},
+  {path:'categoryList',component:CategoryListComponent},
   {path:'home',title:'CRM | Home',loadChildren:() => import('../home/home.module').then(m =>m.HomeModule)},
   
 ];
