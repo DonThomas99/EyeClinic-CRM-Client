@@ -1,0 +1,9 @@
+<div class="flex  flex-col justify-items-center p-8">
+    <div class="flex justify-center">
+        <h3>{{data.title}}</h3>
+    </div>
+    <div class="flex justify-evenly p-5">  
+            <button class="btn bg-slate-300 hover:bg-green-500 " mat-button (click)="dialogRef.close(true)">Yes</button>
+            <button class="btn bg-slate-300 hover:bg-red-500" mat-button (click)="dialogRef.close(false)">No</button>
+    </div>
+</div>

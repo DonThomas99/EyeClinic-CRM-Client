@@ -28,4 +28,9 @@ backendURL = environments.backendURL
     return this.http.post<AddCategoryRes>(`${this.backendURL}/admin/category`,category)
   }
 
+  toggleBlock(categoryId:string){
+    
+    return this.http.put<IApiRes>(`${this.backendURL}/admin/category`,{categoryId})
+  }
+
 }

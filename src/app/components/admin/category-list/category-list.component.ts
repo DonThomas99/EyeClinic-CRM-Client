@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular
 import { AdminService } from '../../../services/adminService/admin.service';
 import { IApiRes } from '../../../models/common';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationComponentComponent } from '../../common/confirmation-component/confirmation-component.component';
 
 @Component({
   selector: 'app-category-list',
@@ -17,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CategoryListComponent implements OnInit {
   addCategoryForm!:FormGroup;  
   categories!:Icategory[];
+  status!:String
 
   addModal = viewChild<ElementRef>('addModal');
   blockToggleModal = viewChild<ElementRef>('blockToggleModal');
@@ -25,7 +28,9 @@ export class CategoryListComponent implements OnInit {
   constructor(private readonly router:Router,
         @Inject(FormBuilder) private readonly formBuilder: FormBuilder,
         private readonly service:AdminService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private dialog:MatDialog,
+
   ){
 
   }
@@ -40,6 +45,7 @@ export class CategoryListComponent implements OnInit {
     })
   }
   editCategory(categoryId:string){
+    console.log(categoryId);
 
   }
   addCategory(){
@@ -60,6 +66,30 @@ export class CategoryListComponent implements OnInit {
   goBackToProducts(){
     this.router.navigate(['/home/admin/productList'])
   }
-  toggleBlockStatus(categoryId:string){}
+  toggleBlockStatus(categoryId:string,isBlocked:boolean){
+    if(isBlocked){
+      this.status = "Unblock"
+    }else{
+      this.status = "Block"
+    }
+    const dialogRef = this.dialog.open(ConfirmationComponentComponent,{
+      data:{title:`Are you sure you want to ${this.status} this category?`},
+      width:'50%',
+      height:'30%'
+      })
+      dialogRef.afterClosed().subscribe(result =>{
+        if(result){
+          this.service.toggleBlock(categoryId).subscribe({
+            next:(res:IApiRes)=>{
+              this.toastr.success(res.message)
+              this.ngOnInit()
+            },
+            error:(err:IApiRes)=>{
+              this.toastr.error(err.message)
+            }
+          })
+        }
+      })
+  }
 
 }

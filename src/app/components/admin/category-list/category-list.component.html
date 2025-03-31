@@ -36,8 +36,8 @@
             <td class="py-3 px-4">
                 <button 
                 [ngClass]="category.isBlocked ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'"
-                class="text-white px-3 py-1 rounded-md"
-                (click)="toggleBlockStatus(category._id)">
+                class="text-white px-3 py-1 rounded-md hover:cursor-pointer"
+                (click)="toggleBlockStatus(category._id,category.isBlocked)">
                 {{ category.isBlocked ? 'Unblock' : 'Block' }}
                 
               </button>
@@ -46,7 +46,7 @@
             <!-- Actions (Edit & Block/Unblock) -->
             <td class="py-3 px-4 flex space-x-2">
               <button 
-                class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600"
+                class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 cursor-pointer"
                 (click)="editCategory(category._id)">
                 Edit
               </button>
@@ -77,15 +77,5 @@
   </div>
 </dialog>
 
-<!-- Toggle Block category modal -->
-<dialog #blockToggleModal id="toggle_modal" class="modal">
-  <div>
-    <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      <h3>
-        
-      </h3>
-    </form>
-  </div>
-</dialog>
+
   
