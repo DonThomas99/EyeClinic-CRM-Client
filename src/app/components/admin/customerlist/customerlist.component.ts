@@ -5,6 +5,10 @@ import { AdminService } from '../../../services/adminService/admin.service';
 import { Icustomer, ICustomerData } from '../../../models/admin';
 import { ToastrService } from 'ngx-toastr';
 import { IUser } from '../../../models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationComponentComponent } from '../../common/confirmation-component/confirmation-component.component';
+import { IApiRes } from '../../../models/common';
+import { UserService } from '../../../services/userService/user.service';
 
 @Component({
   selector: 'app-customerlist',
@@ -14,9 +18,13 @@ import { IUser } from '../../../models/user';
 })
 export class CustomerlistComponent implements OnInit{
   customers!:IUser[]
+  status!:string
   constructor(
-   private readonly service:AdminService,
-   private readonly toastr:ToastrService
+   private readonly service:UserService,
+
+   private readonly toastr:ToastrService,
+   private dialog:MatDialog,
+
   ){}
   ngOnInit(): void {
     this.service.fetchCustomerData().subscribe({
@@ -28,8 +36,30 @@ this.customers = res.customers
       }
     })
   }
-viewCustomer(id:string){
-
+viewCustomer(id:string){}
+toggleBlockStatus(email:string,isBlocked:boolean){
+  if(isBlocked){
+    this.status = "Unblock"
+  }else{
+    this.status = "Block"
+  }
+  const dialogRef = this.dialog.open(ConfirmationComponentComponent,{
+    data:{title:`Are you sure you want to ${this.status} this category?`},
+    width:'50%',
+    height:'30%'
+    })
+    dialogRef.afterClosed().subscribe(result =>{
+      if(result){
+        this.service.toggleBlock(email).subscribe({
+          next:(res:IApiRes)=>{
+            this.toastr.success(res.message)
+            this.ngOnInit()
+          },
+          error:(err:IApiRes)=>{
+            this.toastr.error(err.message)
+          }
+   })
+      }
+    })
 }
-
 }

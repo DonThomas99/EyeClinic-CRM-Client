@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IloginRes, IUser, OUserLogin, OUserSignUp } from '../../models/user';
 import { environments } from '../../../environments/environment';
-import { Res } from '../../models/common';
+import { IApiRes, Res } from '../../models/common';
+import { ICustomerData } from '../../models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,13 @@ backendURL = environments.backendURL
   }
   login(userData:OUserLogin){
     return this.http.post<IloginRes>(`${this.backendURL}/user/login`,userData)
+  }
+
+  toggleBlock(userEmail:string){
+    return this.http.put<IApiRes>(`${this.backendURL}/admin/customers`,{userEmail})
+  }
+
+  fetchCustomerData(){
+    return this.http.get<ICustomerData>(`${this.backendURL}/admin/customers`)
   }
 }

@@ -16,21 +16,7 @@ backendURL = environments.backendURL
   adminLogin(email:string,password:string){
     return this.http.post<IApiRes>(`${this.backendURL}/admin/login`,{email,password})
   }
-  fetchCustomerData(){
-    return this.http.get<ICustomerData>(`${this.backendURL}/admin/customers`)
-  }
 
-  fetchCategoryList(){
-    return this.http.get<categoryRes>(`${this.backendURL}/admin/category`)
-  }
-  addCategory(category:OAddCategory){
-    console.log(category);
-    return this.http.post<AddCategoryRes>(`${this.backendURL}/admin/category`,category)
-  }
 
-  toggleBlock(categoryId:string){
-    
-    return this.http.put<IApiRes>(`${this.backendURL}/admin/category`,{categoryId})
-  }
 
 }

@@ -27,7 +27,9 @@
         <li> <a [routerLink]="'/home/admin/orderList'" routerLinkActive="'active'">Orders</a></li>
       </ul>
     </div>
-    <div (click)="logout()" class="navbar-end">
-      <a class="btn">Logout</a>
+    <div class="navbar-end">
+      <button>
+        <a   [routerLink]="'/home'" class="btn">Logout</a>
+      </button>
     </div>
   </div>

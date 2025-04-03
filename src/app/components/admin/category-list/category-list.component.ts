@@ -9,6 +9,7 @@ import { IApiRes } from '../../../models/common';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationComponentComponent } from '../../common/confirmation-component/confirmation-component.component';
+import { CategoryService } from '../../../services/categoryService/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -27,7 +28,7 @@ export class CategoryListComponent implements OnInit {
 
   constructor(private readonly router:Router,
         @Inject(FormBuilder) private readonly formBuilder: FormBuilder,
-        private readonly service:AdminService,
+        private readonly service:CategoryService,
         private toastr: ToastrService,
         private dialog:MatDialog,
 

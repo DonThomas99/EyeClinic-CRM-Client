@@ -27,8 +27,8 @@ userData:IUser;
 export interface IUser  {
     _id: string;
     name: string;
-    mobile?: string;
-    email?: string;
+    mobile: string;
+    email: string;
     wallet: number;
     walletHistory: IWalletHistory[];
     isBlocked: boolean;
