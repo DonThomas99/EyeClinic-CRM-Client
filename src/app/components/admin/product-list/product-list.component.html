@@ -7,15 +7,20 @@
     <div>
       <button 
         (click)="addProduct()"
-        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2"
+        class="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-semibold py-2 px-4 rounded mr-2"
       >
         Add Product
       </button>
       <button 
         (click)="viewCategories()"
-        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded"
+        class="bg-gray-500 hover:bg-gray-600 cursor-pointer text-white font-semibold py-2 px-4 rounded mr-2"
       >
         View Categories
+      </button>
+      <button [routerLink]="['/home/admin/brandList']"
+      class="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-semibold py-2 px-4 rounded "
+      >
+      Brands
       </button>
     </div>
   </div>

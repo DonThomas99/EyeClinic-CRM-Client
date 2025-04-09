@@ -8,6 +8,7 @@ import { CustomerlistComponent } from './customerlist/customerlist.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OptometristListComponent } from './optometrist-list/optometrist-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { BrandListComponent } from './brand-list/brand-list.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'adminLogin',pathMatch:'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'optometristList',component:OptometristListComponent},
   {path:'staffList', component:StaffListComponent},
   {path:'categoryList',component:CategoryListComponent},
+  {path:'brandList',component:BrandListComponent},
   {path:'home',title:'CRM | Home',loadChildren:() => import('../home/home.module').then(m =>m.HomeModule)},
   
 ];

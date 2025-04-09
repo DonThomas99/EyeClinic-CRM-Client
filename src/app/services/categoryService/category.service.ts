@@ -21,7 +21,6 @@ export class CategoryService {
   }
 
   toggleBlock(categoryId:string){
-    
     return this.http.put<IApiRes>(`${this.backendURL}/admin/category`,{categoryId})
   }
 
