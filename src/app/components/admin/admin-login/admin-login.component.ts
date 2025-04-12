@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms'
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
 import { AdminService } from '../../../services/adminService/admin.service';
 import Swal from 'sweetalert2'
 import { IApiRes } from '../../../models/common';
+import { validateByTrimming } from '../../../helpers/validation';
+import { emailValidators, passwordValidators } from '../../../shared/validators';
 
 @Component({
   selector: 'app-admin-login',
@@ -22,8 +24,8 @@ export class AdminLoginComponent implements OnInit {
   ){}
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email:[''],
-      password:['']
+      email:['',validateByTrimming(emailValidators)],
+      password:['',Validators.required]
     })
   }
 
