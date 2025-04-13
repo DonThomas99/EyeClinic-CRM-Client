@@ -68,15 +68,15 @@ export class ProductListComponent implements OnInit{
         })
         dialogRef.afterClosed().subscribe(result =>{
           if(result){
-            // this.service.toggleBlock(productId).subscribe({
-            //   next:(res:IApiRes)=>{
-            //     this.toastr.success(res.message)
-            //     this.ngOnInit()
-            //   },
-            //   error:(err:IApiRes)=>{
-            //     this.toastr.error(err.message)
-            //   }
-            // })
+            this.service.toggleBlock(productId).subscribe({
+              next:(res:IApiRes)=>{
+                this.toastr.success(res.message)
+                this.ngOnInit()
+              },
+              error:(err:IApiRes)=>{
+                this.toastr.error(err.message)
+              }
+            })
           }
         })
     }

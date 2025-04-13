@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-product',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.css'
 })
-export class EditProductComponent {
+export class EditProductComponent implements OnInit {
+  constructor(
+    public dialogRef:MatDialogRef<EditProductComponent>
+  ){
+  }
+  ngOnInit(): void {
+    
+  }
 
 }
