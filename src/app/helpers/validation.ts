@@ -59,10 +59,9 @@ export function futureDateValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
        const selectedDate = moment(control.value);
        const currentDate = moment();
-       console.log('hee');
+       
        
        if (selectedDate.isBefore(currentDate)) {
-        console.log('heedreth');
          
         return { 'futureDate': true };
        }

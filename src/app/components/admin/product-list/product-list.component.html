@@ -36,6 +36,7 @@
           <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Brand</th>
           <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Stock</th>
           <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Details</th>
           <th class="px-6 py-3 text-center text-sm font-semibold text-gray-600">Action</th>
         </tr>
       </thead>
@@ -55,12 +56,19 @@
             
           </button>
         </td>
+
+        <td class="px-6 py-4 text-center">
+          <button onclick="my_modal_1.showModal()" class="btn" (click)="openDetails(product.description)">
+            DETAILS
+          </button>
+      </td>
+
           <td class="px-6 py-4 text-center">
             <button
               (click)="editProduct(product._id)"
               class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded"
             >
-              Edit
+              EDIT
             </button>
           </td>
         </tr>
@@ -68,3 +76,17 @@
     </table>
   </div>
 </div>
+
+
+<dialog #addModal id="my_modal_1" class="modal">
+  <div class="modal-box h-1/2 w-full">
+    <div>
+      <form  method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" (click)="closeDetails()">✕</button>
+     <h3>
+{{productDescription}}
+     </h3>
+      </form>
+    </div>
+  </div>
+</dialog>

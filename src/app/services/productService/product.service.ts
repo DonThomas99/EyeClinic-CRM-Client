@@ -24,4 +24,9 @@ export class ProductService {
   toggleBlock(productId:String){
     return this.http.put<IApiRes>(`${this.backendURL}/product/product`,{productId})
   }
+
+  updateProduct(productId:string,productData:FormData){
+    return this.http.patch<IApiRes>(`${this.backendURL}/product/product`,{productId,productData})
+  }
+  
 }

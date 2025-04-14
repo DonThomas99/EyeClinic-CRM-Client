@@ -10,6 +10,7 @@ import { ConfirmationComponentComponent } from '../../common/confirmation-compon
 import { IApiRes } from '../../../models/common';
 import { AddProductComponent } from '../../common/add-product/add-product.component';
 import { ProductService } from '../../../services/productService/product.service';
+import { EditProductComponent } from '../../common/edit-product/edit-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit{
   products:Iproduct[] =[]
   product!:Iproduct
   status!:String
+  productDescription!:String
 
   constructor(private readonly router:Router,
     private readonly service:ProductService,
@@ -54,7 +56,18 @@ export class ProductListComponent implements OnInit{
       }
     })
   }
-  editProduct(id:string){}
+  editProduct(productId:string){
+    const dialogRef = this.dialog.open(EditProductComponent,{
+      data:{productId:productId},
+      height:'90%',
+      width:'90%'
+    })  
+
+    dialogRef.afterClosed().subscribe(result=>{
+      // if(result)window.location.reload()
+    })
+  }
+
     toggleBlockStatus(productId:string,isBlocked:boolean){
       if(isBlocked){
         this.status = "Unblock"
@@ -79,5 +92,12 @@ export class ProductListComponent implements OnInit{
             })
           }
         })
+    }
+
+    openDetails(description:string){
+      this.productDescription = description
+    }
+    closeDetails(){
+      this.productDescription =''
     }
 }
