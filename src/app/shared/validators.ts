@@ -1,5 +1,5 @@
 import { Validators,AbstractControl } from "@angular/forms";
-import { userNameMaxLength,userNameMinLength,nameRegex,emailRegex,OTPRegex,passwordLength,ZipRegex,passwordRegex,mobileRegex, productNameRegex, productMinLength, productMaxLength } from "./constants";
+import { userNameMaxLength,userNameMinLength,nameRegex,emailRegex,OTPRegex,passwordLength,ZipRegex,passwordRegex,mobileRegex, productNameRegex, productMinLength, productMaxLength, stockMin, stockMax } from "./constants";
 
 export const nameValidators =[
     Validators.required,
@@ -18,8 +18,13 @@ export const productNameValidators =[
 
 export const amountValidators =[
     Validators.required,
+    Validators.min(200)    
+]
 
-    
+export const stockValidators = [
+    Validators.required,
+    Validators.min(stockMin),
+    Validators.max(stockMax)
 ]
 
 export const emailValidators = [

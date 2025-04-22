@@ -1,0 +1,6 @@
+<div class="productName" *ngIf="isSubmitted && productNameControl && productNameControl.errors">
+    <div *ngIf="productNameControl.errors['required']" >Name is required</div>
+    <div *ngIf="productNameControl.errors['minlength']" >Name must contain {{productNameControl.errors['minlength'].requiredLength}} characters</div>
+    <div *ngIf="productNameControl.errors['minlength']" >Name must contain {{productNameControl.errors['maxlength'].requiredLength}} characters</div>
+    <div *ngIf="productNameControl.errors['pattern'] && !productNameControl.errors['minlength'] && !productNameControl.errors['maxlength']">Unwanted Characters Detected</div>
+</div>

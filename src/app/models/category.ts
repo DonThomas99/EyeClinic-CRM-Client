@@ -14,6 +14,10 @@ export interface OAddCategory{
 categoryName:string
 }
 
+export interface OCategory{
+    name:string;
+}
+
 export interface categoryRes{
     status:number;
     message:string;

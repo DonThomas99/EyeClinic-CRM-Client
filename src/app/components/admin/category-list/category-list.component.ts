@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationComponentComponent } from '../../common/confirmation-component/confirmation-component.component';
 import { CategoryService } from '../../../services/categoryService/category.service';
+import { UpdateCategoryBrandComponent } from '../../common/update-category-brand/update-category-brand.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category-list',
@@ -46,9 +48,20 @@ export class CategoryListComponent implements OnInit {
     })
   }
   editCategory(categoryId:string){
-    console.log(categoryId);
-
+  const dialogRef = this.dialog.open(UpdateCategoryBrandComponent,{
+    data:{
+      Item:'Category',ItemId:categoryId,
+      title:'Edit Category'
+    },
+    width:'50%',
+    height:'40%'
+  })  
+  dialogRef.afterClosed().subscribe(()=>{
+this.ngOnInit()
+  })
+  
   }
+
   addCategory(){
     if(this.addCategoryForm.valid){
       const values = this.addCategoryForm.getRawValue()

@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit{
   }
   editProduct(productId:string){
     const dialogRef = this.dialog.open(EditProductComponent,{
-      data:{productId:productId},
+      data:{productId:productId,title:'Edit Product'},
       height:'90%',
       width:'90%'
     })  

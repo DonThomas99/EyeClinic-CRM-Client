@@ -9,6 +9,7 @@ import { IApiRes } from '../../../models/common';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationComponentComponent } from '../../common/confirmation-component/confirmation-component.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateCategoryBrandComponent } from '../../common/update-category-brand/update-category-brand.component';
 
 @Component({
   selector: 'app-brand-list',
@@ -82,7 +83,17 @@ export class BrandListComponent implements OnInit{
     }
 
     editBrand(brandId:string){
-
+      const dialogRef = this.dialog.open(UpdateCategoryBrandComponent,{
+        data:{
+          Item:'Brand',ItemId:brandId,
+          title:'Edit Brand'
+        },
+        width:'50%',
+        height:'40%'
+      })
+      dialogRef.afterClosed().subscribe(()=>{
+        this.ngOnInit()
+      })
     }
   
 }

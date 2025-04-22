@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddCategoryRes, categoryRes, OAddCategory } from '../../models/category';
+import { AddCategoryRes, categoryRes, OAddCategory, OCategory } from '../../models/category';
 import { IApiRes } from '../../models/common';
 import { environments } from '../../../environments/environment';
 
@@ -22,6 +22,10 @@ export class CategoryService {
 
   toggleBlock(categoryId:string){
     return this.http.put<IApiRes>(`${this.backendURL}/admin/category`,{categoryId})
+  }
+
+  updateCategory(categoryId:string, categoryData:Partial<OCategory>){
+    return this.http.patch<IApiRes>(`${this.backendURL}/admin/category`,{categoryId,categoryData})
   }
 
 }

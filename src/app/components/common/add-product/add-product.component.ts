@@ -9,6 +9,8 @@ import { BrandService } from '../../../services/BrandService/brand.service';
 import { CategoryService } from '../../../services/categoryService/category.service';
 import { ProductService } from '../../../services/productService/product.service';
 import { IpdtRes } from '../../../models/product';
+import { validateByTrimming } from '../../../helpers/validation';
+import { amountValidators, nameValidators, productNameValidators, stockValidators } from '../../../shared/validators';
 
 @Component({
   selector: 'app-add-product',
@@ -32,11 +34,11 @@ export class AddProductComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      name:['',[Validators.required]],
-      category:['',Validators.required],
-      brand:['',Validators.required],
-      price:[0,[Validators.required,Validators.min(200)]],
-      stock:[0,[Validators.required,Validators.min(10),Validators.max(100)]],
+      name:['',[validateByTrimming(productNameValidators)]],
+      category:['',[validateByTrimming(nameValidators)]],
+      brand:['',[validateByTrimming(nameValidators)]],
+      price:[0,[validateByTrimming(amountValidators)]],
+      stock:[0,[validateByTrimming(stockValidators)]],
       description:['',Validators.required]
     })
     this.brandService.fetchBrandList().subscribe({
