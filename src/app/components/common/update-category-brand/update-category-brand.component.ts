@@ -122,7 +122,7 @@ export class UpdateCategoryBrandComponent implements OnInit {
         });
       }
     } else {
-      this.toastr.error('Please fix the validation errors');
+      this.toastr.error('Please Enter a alid Value');
     }
   }
   closeComponent() {
